@@ -1,0 +1,133 @@
+🚨 Suraksha – MVP Mobile App Prompt
+Goal:
+Build a React Native mobile app called Suraksha. This is an MVP for demo purposes, so UI/UX clarity is more important than fully working backend features. It should look professional, clean, and easy to demo, even if some features are mocked or simulated.
+
+🌐 Tech Stack
+React Native (Expo) for mobile development (cross-platform Android + iOS).
+
+TypeScript for type safety.
+
+Use Tailwind or simple styled-components for styling.
+
+Use dummy/mock data where real sensors or APIs are not possible.
+
+📱 App Overview
+Suraksha continuously monitors user safety using:
+
+🎤 Voice trigger detection (keyword “help”) + distress emotion (mocked for demo).
+
+❤️ Heart rate (simulated from wearable).
+
+📍 Location (use expo-location with mock fallback).
+
+📊 Motion sensors (accelerometer/gyroscope via expo-sensors, mock if not available).
+
+All signals feed into an AI Scoring Model (mocked) that decides whether to escalate.
+
+🖌️ UI / UX Requirements
+1. Onboarding & Permissions
+First launch shows consent screen explaining app collects mic, location, motion, heart rate.
+
+User must tap “I Agree & Continue” before proceeding.
+
+2. Home Dashboard
+Clean card-based layout with status indicators:
+
+🎤 Voice: ✅ Active / ❌ Inactive
+
+❤️ Heart Rate: e.g., “78 bpm” (simulate live values)
+
+📍 Location: e.g., “12.34, 56.78”
+
+📊 Motion: “Stable / Sudden Movement”
+
+Large Start Monitoring / Stop Monitoring button in the center.
+
+Subtle background animation (heartbeat pulse effect).
+
+3. Alert Flow
+When anomaly is detected (mock with a button for demo), trigger Stage 1 Alert Screen:
+
+Full-screen alert: “Are you safe?”
+
+Big buttons: ✅ “I Am Safe” / 🚨 “Need Help”
+
+Countdown timer (10s).
+
+If no response → go to Stage 2:
+
+Show mock “Sending Location to Trusted Contacts…” with animated loader.
+
+Show list of contacts with ✅ icons.
+
+If still no response → Stage 3:
+
+Show “Alerting Police…” screen.
+
+Include details: time, location, anomaly type (voice/heart/motion).
+
+4. Settings Screen
+User profile (name, photo).
+
+Add / edit trusted contacts (mock with simple list).
+
+Toggle “High-Risk Mode” (increases sensitivity).
+
+Dark mode switch.
+
+🔧 Functionality (Mocked for MVP)
+Voice Trigger: Simulate with a “Test Voice Trigger” button.
+
+Heart Rate: Generate random BPM between 70–100 every few seconds.
+
+Motion: Simulate “sudden shake” with button.
+
+Location: Fetch once from expo-location, then show mock updates.
+
+Fusion Model: Just random chance + button trigger for demo.
+
+Escalation: UI-only flow, no real SMS/calls.
+
+🎨 Styling Guidelines
+Use calm, safe theme: primary color = teal/blue (#1B4D3E background, white cards).
+
+Minimalist cards with icons for each sensor.
+
+Rounded buttons with shadows, large and clear labels.
+
+Animations:
+
+Pulsing heart icon for heart rate.
+
+Vibrating alert screen for emergencies.
+
+📂 App Structure
+bash
+Copy code
+/app
+  /screens
+    Onboarding.tsx
+    Home.tsx
+    AlertStage1.tsx
+    AlertStage2.tsx
+    AlertStage3.tsx
+    Settings.tsx
+  /components
+    StatusCard.tsx
+    BigButton.tsx
+  /utils
+    mockSensors.ts
+🧪 Demo Script
+Open app → onboarding consent screen.
+
+Home dashboard shows live mock data (voice ✅, HR ❤️ 82 bpm, location 📍).
+
+Press “Test Voice Trigger” → Stage 1 alert pops up.
+
+Ignore alert → auto-escalates to Stage 2 (contacts notified).
+
+Ignore again → Stage 3 (police alerted with details).
+
+Open settings → show trusted contacts + dark mode toggle.
+
+⚠️ Note: This MVP is for pitch/demo only. Features like real keyword detection, BLE heart rate, or police alerts are mocked with UI/UX flows.
